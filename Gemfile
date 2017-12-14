@@ -1,15 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.21.0 '
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -26,9 +24,7 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 # user cancan for roles
 gem 'cancan'
 # twitter bootstrap
-gem 'therubyracer'
-gem 'less-rails' # Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 #use devise for authentication
 gem 'devise'
 #carrierwave gem
@@ -37,11 +33,10 @@ gem 'carrierwave', '~> 1.0'
 gem 'acts_as_votable', '~> 0.11.1'
 #for comments
 gem 'acts_as_commentable'
-# acts as follower
-gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 #public activity
 gem 'public_activity'
 
+gem 'listen'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
