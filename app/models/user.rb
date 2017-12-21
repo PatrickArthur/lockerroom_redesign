@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: %i[facebook]
   mount_uploader :avatar, AvatarUploader
   has_one :profile
+  has_many :athlete_metrics
 end

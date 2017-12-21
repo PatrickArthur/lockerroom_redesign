@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221181837) do
+ActiveRecord::Schema.define(version: 20171221192631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "athlete_metrics", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "age"
+    t.integer "weight"
+    t.integer "height"
+    t.integer "waist"
+    t.integer "neck"
+    t.integer "bmi"
+    t.integer "bodyfat"
+    t.integer "wilkes"
+    t.integer "speed"
+    t.integer "hip"
+    t.integer "bench"
+    t.integer "squat"
+    t.integer "deadlift"
+    t.integer "powerclean"
+    t.integer "cleanpress"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_athlete_metrics_on_user_id"
+  end
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "title", limit: 50, default: ""
@@ -79,6 +102,9 @@ ActiveRecord::Schema.define(version: 20171221181837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "avatars"
+    t.string "provider"
+    t.string "uid"
+    t.text "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
