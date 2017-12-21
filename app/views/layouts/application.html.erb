@@ -6,9 +6,27 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="app-page">
 
-<%= yield %>
+  <div class="navbar">
+    <div class="container">
+      <div class="pull-right">
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <% end %>
+      </div>
+      <a href="#" class="brand" > The LockerRoom </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <p style="text-align:center"><%= notice %></p>
+      <p style="text-align:center"><%= alert %></p>
+    </div>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
