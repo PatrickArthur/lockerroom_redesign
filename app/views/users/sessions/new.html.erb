@@ -29,7 +29,7 @@
             <div class="social-login">
               <p>- - - - - - - - Sign In With - - - - - - - - </p>
               <ul>
-                <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+                <li><%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "fa fa-facebook" %></li>
                 <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
                 <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
               </ul>
@@ -59,7 +59,7 @@
             <div class="social-login">
               <p>- - - - - - - - Register With - - - - - - - - </p>
               <ul>
-                <li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+                <li><%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "fa fa-facebook" %></li>
                 <li><a href=""><i class="fa fa-google-plus"></i> Google+</a></li>
                 <li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
               </ul>
