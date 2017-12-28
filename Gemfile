@@ -38,6 +38,9 @@ gem 'public_activity'
 
 gem 'listen'
 
+#reactjs
+gem 'react-rails'
+
 #omnioth facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
