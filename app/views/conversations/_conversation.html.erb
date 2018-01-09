@@ -14,7 +14,7 @@
       <%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
         <%= f.hidden_field :user_id, value: user.id %>
         <%= f.text_area :body, class: "form-control" %>
-        <%= f.submit "Send", class: "btn btn-success" %>
+        <%= f.submit "Send", :data => { :'id' => conversation.id },class: "btn btn-success create-message" %>
       <% end %>
     </div>
   </div>

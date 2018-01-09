@@ -6,6 +6,7 @@ $(document).ready(function () {
 function init_conversation() {
   $(".select_user_conv").click(create_conversation);
   $(".close_conv").click(close_conversation);
+  $(".create-message").click(create_message);
 }
 
 function create_conversation() {
@@ -19,10 +20,33 @@ function create_conversation() {
   });
 }
 
+function create_message(e) {
+  var form_data = $(this).closest("form").serialize();
+  var conversation_id = $(this).attr("data-id");
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  $.post( "/conversations/" + conversation_id + "/messages", form_data ,function( data ) {
+    if (data.message != null) {
+      message_callback(data, conversation_id)
+    } else {
+      console.log("message not created");
+    }
+  });
+  false
+}
+
 function conversation_callback(data) {
   $("#conversations-list").append(data.conversation);
   show_message_list(data);
   $(".close_conv").click(close_conversation);
+  $(".create-message").click(create_message);
+}
+
+function message_callback(data, id) {
+  var conversation = $('#conversations-list').find("[data-conversation-id='" + id + "']");
+  conversation.find('.messages-list').find('ul').append(data.message);
+  conversation.find('textarea').val('');
 }
 
 function close_conversation() {
