@@ -38,6 +38,8 @@ gem 'public_activity'
 
 gem 'listen'
 
+gem 'puma'
+
 #reactjs
 gem 'react-rails'
 

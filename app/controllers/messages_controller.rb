@@ -4,10 +4,7 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.create(message_params)
 
     respond_to do |format|
-      if @message.save
-        render :json => { :message => render_to_string('messages/_message', :layout => false, :locals => { message: @message, user: current_user })}
-        format.js
-      end
+      format.js
     end
   end
 
