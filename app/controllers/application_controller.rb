@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(user)
-    user.profile.present? ? root_path : new_profile_path
+    root_path
+    # user.profile.present? ? root_path : new_profile_path
   end
 
   layout Proc.new { |controller| controller.devise_controller? ? 'devise' : 'application' }
