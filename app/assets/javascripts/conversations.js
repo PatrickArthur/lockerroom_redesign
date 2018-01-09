@@ -1,5 +1,6 @@
 $(document).ready(function () {
   init_conversation();
+  $('.panel-body').show();
 });
 
 function init_conversation() {
