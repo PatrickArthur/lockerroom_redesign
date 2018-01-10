@@ -1,6 +1,7 @@
 <li>
   <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
     <div class="panel-heading">
+      <%= image_tag user.avatar, class: "user_avatar img-circle" %>
       <%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
       <%= link_to "x", close_conversation_path(conversation), :data => { :'id' => conversation.id }, class: "btn btn-default btn-xs pull-right close_conv", remote: true, method: :post %>
     </div>

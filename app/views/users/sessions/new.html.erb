@@ -50,6 +50,9 @@
                 <%= f.password_field :password, autocomplete: "off" %>
                 <%= f.label :password_confirmation, "Password Confirmation" %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                <%= f.label :avatar, "Upload Avatar" %><br />
+                <%= f.file_field :avatar %>
+                <%= f.hidden_field :avatar_cache %>
                 <%= f.submit "Join Now" %>
               <% end %>
                 </br>

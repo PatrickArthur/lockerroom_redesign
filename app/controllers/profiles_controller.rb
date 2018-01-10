@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    # binding.pry
     session[:conversations] ||= []
 
     @users = User.all.where.not(id: current_user)

@@ -1,6 +1,7 @@
 <li>
   <div class="row">
     <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
+      <%= image_tag user.avatar, class: "user_avatar img-circle" %>
       <%= message.body %>
     </div>
   </div>

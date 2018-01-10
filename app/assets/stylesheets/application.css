@@ -17,3 +17,8 @@
  .app-page .navbar {
     background:#4d4dff;
   }
+
+  .user_avatar {
+    width: 25px;
+    height: 25px;
+  }
