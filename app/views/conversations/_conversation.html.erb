@@ -1,23 +1,11 @@
 <li>
-  <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
+  <div class="panel-conv panel panel-default" data-conversation-id="<%= conversation.id %>">
     <div class="panel-heading">
-      <%= image_tag user.avatar, class: "user_avatar img-circle" %>
-      <%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
-      <%= link_to "x", close_conversation_path(conversation), :data => { :'id' => conversation.id }, class: "btn btn-default btn-xs pull-right close_conv", remote: true, method: :post %>
-    </div>
-
-    <div class="panel-body" style="display: none;">
-      <div class="messages-list">
-        <ul>
-          <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
-        </ul>
-      </div>
-      <form class="new_message">
-        <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
-        <input name="user_id" type="hidden" value="<%= user.id %>">
-        <textarea name="body" class="form-control"></textarea>
-        <input type="submit" class="btn btn-success" value="Send">
-      </form>
+      <%= image_tag conversation.recipient.avatar, class: "user_avatar img-circle" %>
+      <%= link_to conversation.opposed_user(conversation.sender).email, conversation_path(conversation), class: 'toggle-window', method: :get %>
+      <% if !conversation.messages.empty? %>
+        <%= truncate(conversation.messages.last.body, :length => 10) %>
+      <% end %>
     </div>
   </div>
 </li>

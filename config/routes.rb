@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'profiles#index'
+  resources :users, only: [:index]
+
+  root 'users#index'
 
   resources :profiles
 
-  resources :conversations, only: [:create] do
+  resources :conversations, only: [:index, :create, :show] do
     member do
       post :close
     end

@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
+  before_action :set_user, except: [:index]
   before_action :check_ownership, only: [:edit, :update]
   respond_to :html, :js
+
+  def index
+    @users = User.all.where.not(id: current_user)
+  end
 
   def show
     @activities = PublicActivity::Activity.where(owner: @user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)

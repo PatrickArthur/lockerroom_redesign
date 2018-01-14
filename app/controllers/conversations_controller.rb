@@ -1,23 +1,21 @@
 class ConversationsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @conversation = Conversation.get(current_user.id, params[:user_id])
     conversation_exists = conversated?
-    add_to_conversations unless conversated?
+    redirect_to conversation_path(@conversation.id) unless conversated?
+  end
 
-    respond_to do |format|
-      if conversation_exists
-        render :json => { :conversated => conversation_exists }
-      else
-        render :json => { :conversation => render_to_string('conversations/_conversation', :layout => false, :locals => { conversation: @conversation, user: current_user }) , id: @conversation.id}
-      end
-      format.js
-    end
+  def show
+    @conversation = Conversation.find(params[:id])
   end
 
   def close
     @conversation = Conversation.find(params[:id])
 
     session[:conversations].delete(@conversation.id)
+    @conversation.destroy
 
     respond_to do |format|
       render :json => { :conversation => params[:id]}

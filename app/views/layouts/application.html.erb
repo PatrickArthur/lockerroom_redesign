@@ -11,10 +11,28 @@
   <div class="navbar">
     <div class="container">
       <div class="pull-right">
-        <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        <% end %>
+        <div class="row">
+          <div class="col-sm-2">
+            <%= link_to "", users_path, :class => 'glyphicon glyphicon-user' %>
+          </div>
+          <div class="col-sm-2">
+            <div class="dropdown">
+              <span class="messages glyphicon glyphicon-bell" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </span>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <% current_user.conversations.each do |conversation| %>
+                <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <% if user_signed_in? %>
+              Signed in as <%= image_tag current_user.avatar, class: "user_avatar img-circle" %>
+              <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <a href="#" class="brand" > The LockerRoom </a>
     </div>

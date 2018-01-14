@@ -22,3 +22,23 @@
     width: 25px;
     height: 25px;
   }
+
+  .glyphicon.glyphicon-bell {
+    font-size: 15px;
+    color: white;
+    padding-top:10px;
+  }
+
+  .glyphicon.glyphicon-user {
+    font-size: 15px;
+    color: white;
+    padding-top:10px;
+  }
+
+  .panel-conv  {
+    margin: 0 !important;
+    padding:0 !important;
+  }
+
+
+

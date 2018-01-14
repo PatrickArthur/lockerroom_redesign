@@ -1,0 +1,23 @@
+<div class="panel panel-default" id="conversation_page" data-conversation-id="<%= @conversation.id %>">
+  <div class="panel-heading">
+    <%= image_tag current_user.avatar, class: "user_avatar img-circle" %>
+    <%= link_to @conversation.opposed_user(current_user).email, '', class: 'toggle-window' %>
+    <%= link_to "x", close_conversation_path(@conversation), :data => { :'id' => @conversation.id }, class: "btn btn-default btn-xs pull-right close_conv", remote: true, method: :post %>
+  </div>
+
+  <div class="panel-body" style="display: none;">
+    <div class="messages-list">
+      <ul>
+        <%= render 'conversations/conversation_content', messages: @conversation.messages, user: current_user %>
+      </ul>
+    </div>
+    <form class="new_message">
+      <input name="conversation_id" type="hidden" value="<%= @conversation.id %>">
+      <input name="user_id" type="hidden" value="<%= current_user.id %>">
+      <textarea name="body" class="form-control"></textarea>
+      <input type="submit" class="btn btn-success" value="Send">
+    </form>
+  </div>
+</div>
+
+<%= link_to '<i class="glyphicon glyphicon-envelope"></i> Conversations'.html_safe, conversations_path, class: 'btn' %>

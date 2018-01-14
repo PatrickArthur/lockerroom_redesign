@@ -18,6 +18,7 @@
 //= require react_ujs
 //= require components
 //= require_tree .
+//= require conversations
 
 $(document).ready(function () {
   $("#event_when").datetimepicker({

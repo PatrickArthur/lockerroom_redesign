@@ -1,0 +1,16 @@
+<% @users.each_slice(3) do |slice| %>
+  <div class="row">
+    <% slice.each do |user| %>
+      <div class="col-sm-4">
+        <% if user.online? %>
+          <%= image_tag('online.png') %>
+        <% else %>
+          <%= image_tag('offline.png') %>
+        <% end %>
+        <%= image_tag user.avatar, class: "user_avatar img-circle" %>
+        <%= user.email %>
+        <%= link_to "", conversations_path(user_id: user), :data => { :'id' => user.id }, class: "select_user_conv glyphicon glyphicon-envelope", remote: true, method: :post %>
+      </div>
+    <% end %>
+  </div></br>
+<% end %>

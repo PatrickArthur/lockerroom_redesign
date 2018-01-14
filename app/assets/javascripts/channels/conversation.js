@@ -2,7 +2,7 @@ App.conversation = App.cable.subscriptions.create("ConversationChannel", {
   connected: function() {},
   disconnected: function() {},
   received: function(data) {
-    var conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
+    var conversation = $("[data-conversation-id='" + data['conversation_id'] + "']");
 
     if (data['window'] !== undefined) {
       var conversation_visible = conversation.is(':visible');
