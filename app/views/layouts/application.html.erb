@@ -17,11 +17,16 @@
           </div>
           <div class="col-sm-2">
             <div class="dropdown">
+              <div id="message_count"> <%= current_user.has_new_message? %> </div>
               <span class="messages glyphicon glyphicon-bell" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               </span>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <% current_user.conversations.each do |conversation| %>
-                <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+                <% if current_user.conversations.empty? %>
+                  <p> No Open Conversations </p>
+                <% else %>
+                  <% current_user.conversations.each do |conversation| %>
+                  <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+                  <% end %>
                 <% end %>
               </div>
             </div>
